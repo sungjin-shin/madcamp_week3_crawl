@@ -4,16 +4,32 @@ import * as Morgan from "morgan";
 import * as dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("week3", "kaist", "kaist", {
+/*
+const sequelize = new Sequelize("sqlTutorial", "kaist", "kaist", {
   host: "localhost",
-  dialect: "mariadb",
+  dialect: "mysql",
+  });*/
+
+const SequelizeAuto = require('sequelize-auto');
+const auto = new SequelizeAuto('sqlTutorial','kaist','kaist',{
+  host:'localhost',
+	dialect:'mysql',
+    port:'3306',
+		tables:['companyInfo','companySichong', 'stockPrice']
+});
+	 auto.run((err)=>{
+    if(err) {
+    console.log(err);
+    throw err;
+    }
 });
 
+      /*
 try {
   sequelize.authenticate();
 } catch (error) {
   console.error(error);
-}
+  }*/
 
 const app = Express();
 
