@@ -1,5 +1,6 @@
 import requests
 import numpy as np
+import pandas as pd
 
 from bs4 import BeautifulSoup
 
@@ -65,4 +66,7 @@ def crawler_total_upjong(page_num):
 
 
 if __name__ == "__main__":
-    print(crawler())
+    result = crawler()
+    df = pd.DataFrame(result)
+    df.to_csv("upjong_sichong.csv", header=None, index=None)
+    # print(crawler())
