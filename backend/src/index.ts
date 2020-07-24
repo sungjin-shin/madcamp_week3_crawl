@@ -4,12 +4,11 @@ import * as Morgan from "morgan";
 import * as dotenv from "dotenv";
 import { Sequelize } from "sequelize";
 
-dotenv.config();
-
 const sequelize = new Sequelize("week3", "kaist", "kaist", {
   host: "localhost",
   dialect: "mariadb",
 });
+
 try {
   sequelize.authenticate();
 } catch (error) {
@@ -23,6 +22,7 @@ app.use(bodyParser.json());
 app.use(Morgan("dev"));
 
 const port = 4000;
+
 app.listen(port, () => {
   console.log(`Listening to port: ${port}`);
 });
