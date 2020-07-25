@@ -3,10 +3,9 @@ import { User } from "../../entity/user";
 
 export const loginUser: RequestHandler = async (req, res, next) => {
   try {
-    const body = req.body;
     const dto = {
-      email: body.email,
-      password: body.password,
+      email: req.body.email,
+      password: req.body.password,
     };
     //TODO: password Hash 해주기.
 
