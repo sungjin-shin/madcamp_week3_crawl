@@ -1,7 +1,7 @@
 import * as Express from "express";
 import * as bodyParser from "body-parser";
 import * as Morgan from "morgan";
-import * as dotenv from "dotenv";
+import * as cors from "cors";
 import * as session from "express-session";
 import route from "./routes";
 import { createConnection } from "typeorm";
@@ -24,6 +24,7 @@ initialize();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(Morgan("dev"));
+app.use(cors());
 app.use(
   session({
     secret: "week3_sucks",
