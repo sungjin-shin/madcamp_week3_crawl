@@ -1,14 +1,6 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  JoinColumn,
-  OneToMany,
-} from "typeorm";
-import { CompanyInfo } from "./companyInfo";
-
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from "typeorm";
 @Entity()
-export class StockPrice {
+export class StockPrice extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: string;
 
