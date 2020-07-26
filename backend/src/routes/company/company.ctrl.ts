@@ -5,10 +5,10 @@ import { CompanySichong } from "../../entity/companySichong";
 
 export const getCompanyInfos: RequestHandler = async (req, res, next) => {
   try {
-    if (!req.session.user) {
-      console.log("허가되지 않은 접근 시도");
-      return res.status(403).json({ msg: "허가되지 않은 접근 시도" });
-    }
+//    if (!req.session.user) {
+//      console.log("허가되지 않은 접근 시도");
+//      return res.status(403).json({ msg: "허가되지 않은 접근 시도" });
+//    }
 
     // TODO: Active Record Pattern 적용하기
     const companys = await getRepository(CompanySichong)
