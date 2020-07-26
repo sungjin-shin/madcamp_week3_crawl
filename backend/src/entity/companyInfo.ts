@@ -1,13 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryColumn,
+  BaseEntity,
+  CreateDateColumn,
+} from "typeorm";
 
 @Entity()
-export class CompanyInfo {
+export class CompanyInfo extends BaseEntity {
   @PrimaryColumn()
-  code: string;
+  code!: string;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column()
-  upjong: string;
+  upjong!: string;
+
+  @CreateDateColumn({ name: "created_at" })
+  createdAt!: Date;
 }
