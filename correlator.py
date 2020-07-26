@@ -15,3 +15,4 @@ if __name__ == "__main__":
     df = df.astype('float')
 
     corr = df.corr(method='pearson')
+    corr.to_csv('parsed_stock_data.csv')
