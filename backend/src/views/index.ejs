@@ -40,14 +40,14 @@
       try {
         var email = document.getElementById("inputEmail").value;
         var password = document.getElementById("inputPassword").value;
-        postData("http://localhost:8081/api/auth/login", {
+        postData("http://192.249.19.243:8780/api/auth/login", {
           email: email,
           password: password,
         })
           .then((data) => {
-            console.log(JSON.stringify(data));
+            console.log('shibal:',JSON.stringify(data));
             // console.log(email, password);
-            $(location).attr("href", "http://localhost:8081/main");
+            $(location).attr("href", "http://192.249.19.243:8780/main");
           })
           .catch((error) => {
             console.error(error);
@@ -63,7 +63,6 @@
       console.log(data);
       return fetch(url, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
