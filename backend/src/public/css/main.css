@@ -458,3 +458,16 @@ ul.CTAs a {
   border-radius: 5px;
   margin-bottom: 5px;
 }
+/* ---------------------------------------------------
+    Custom right sidebar
+----------------------------------------------------- */
+#newsList {
+    color: #000;
+    height: 720px;
+    overflow-y: scroll;
+  }
+  .custom-card {
+    width: 400px;
+    margin: auto;
+  }
+  

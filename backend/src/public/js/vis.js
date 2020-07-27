@@ -57,8 +57,10 @@ function draw() {
         params.event = "[original Event]";
         var nodeInfo = params;
         node = nodes.get(nodeInfo.nodes);
+        var compName = node[0].label;
         console.log(node);
-        $("#resultChecker").text(node[0].label);
+        $("#resultChecker").text(compName);
+        compNews(compName);
         if ($("#rightsidebar").attr("class") != "") {
             $("#rightsidebar").toggleClass("active");
         }
@@ -155,7 +157,43 @@ function putCompanyList() {
         );
     });
 }
+function compNews(compName) {
+    postData("http://192.249.19.243:8780/api/naver/news", { comp: compName })
+        .then((data) => {
+            putCompanyNews(data.data);
+            //console.log(compInfos);
+            //console.log(JSON.stringify(data));
+            return true;
+        })
+        .catch((error) => console.error(error));
+}
 
+function putCompanyNews(data) {
+    $("#newsList").empty();
+    console.log(data);
+    data.forEach((element) => {
+        $("#newsList").append(
+            `<div class="card custom-card">
+        <div class="card-body">
+          <h5 class="card-title">
+          ${element["title"]}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+          ${element["pubDate"]}
+          </h6>
+          <p class="card-text small">
+          ${element["description"]}
+          </p>
+          <a
+            href="${element["originallink"]}"
+            class="card-link"
+            >보러가기</a
+          >
+        </div>
+      </div>`
+        );
+    });
+}
 window.onload = function () {
     console.log("load가 다 됐어요.");
     compInfo();
