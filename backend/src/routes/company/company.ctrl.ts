@@ -80,7 +80,7 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
       id: company_codes.findIndex((val) => val == c.code),
       label: c.name,
       title: c.code,
-      value: c.sichong,
+      value: Number(Math.log(c.sichong).toFixed(6)) * 10,
       group: c.upjong,
     }));
     console.log(` extract values : ${company_codes}`);
