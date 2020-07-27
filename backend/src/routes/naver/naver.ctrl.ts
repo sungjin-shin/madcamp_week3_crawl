@@ -9,9 +9,14 @@ import { URL, URLSearchParams } from "url";
 export const getNews: RequestHandler = async (req, res, next) => {
   try {
     console.log(req.query);
+<<<<<<< HEAD
     console.log(req.body);
     const comp = {
       comp: req.body.comp as string,
+=======
+    const comp = {
+      comp: req.query.comp as string,
+>>>>>>> feat: Naver New API 구현
     };
     const params = new URLSearchParams({ query: comp.comp });
     getData("https://openapi.naver.com/v1/search/news.json?" + params).then(
@@ -39,7 +44,6 @@ function getData(url) {
       return response.json();
     })
     .then((myJson) => {
-      // console.log(myJson);
       return myJson;
     })
     .catch((error) => {
