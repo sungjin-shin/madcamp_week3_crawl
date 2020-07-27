@@ -97,7 +97,9 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
           return {
             from: from,
             to: to,
-            value: Number(corr.weight),
+            color: { color: Number(corr.weight) >= 0 ? "red" : "blue" },
+            title: corr.weight,
+            value: Math.abs(Number(corr.weight)),
           };
         }
       })
