@@ -88,11 +88,20 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
       where: { sourceCode: In(company_codes), targetCode: In(company_codes) },
       order: { sourceCode: "ASC", targetCode: "DESC" },
     });
-    const processed_corrs = corrs.map((corr) => ({
-      from: company_codes.findIndex((val) => val == corr.sourceCode),
-      to: company_codes.findIndex((val) => val == corr.targetCode),
-      value: Number(corr.weight),
-    }));
+
+    const processed_corrs = corrs
+      .map((corr) => {
+        const from = company_codes.findIndex((val) => val == corr.sourceCode);
+        const to = company_codes.findIndex((val) => val == corr.targetCode);
+        if (from <= to) {
+          return {
+            from: from,
+            to: to,
+            value: Number(corr.weight),
+          };
+        }
+      })
+      .filter((elem) => elem != null);
 
     return res.json({
       data: { nodes: processed_companies, edges: processed_corrs },
