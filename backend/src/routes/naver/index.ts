@@ -3,5 +3,5 @@ import * as naverCtrl from "./naver.ctrl";
 
 const router = Router();
 
-router.get("/news", naverCtrl.getNews);
+router.post("/news", naverCtrl.getNews);
 export default router;
