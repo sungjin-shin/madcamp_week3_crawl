@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { UserCompanys } from "../entity/userCompanys";
 
 const router = Router();
 
@@ -14,7 +15,20 @@ router.get("/main", function (req, res) {
   if (!req.session.user) {
     return res.status(403).redirect("/");
   } else {
-    return res.status(200).render("main");
+    const email = req.session.user.email;
+    UserCompanys.findOne(email)
+      .then((companys) => {
+        if (companys == null)
+          return res.render("main", { selectedCompanies: [] });
+        else
+          return res.render("main", {
+            selectedCompanies: companys.companyNames,
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+        return res.render("main", { selectedCompanies: [] });
+      });
   }
 });
 

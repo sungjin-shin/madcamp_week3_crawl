@@ -3,6 +3,7 @@ import { createQueryBuilder, getConnection, getRepository, In } from "typeorm";
 import { CompanyCorr } from "../../entity/companyCorr";
 import { CompanyInfo } from "../../entity/companyInfo";
 import { CompanySichong } from "../../entity/companySichong";
+import { UserCompanys } from "../../entity/userCompanys";
 
 export const getCompanyInfos: RequestHandler = async (req, res, next) => {
   try {
@@ -31,6 +32,10 @@ export const getCompanyInfos: RequestHandler = async (req, res, next) => {
 
 export const getCompanyCorrelation: RequestHandler = async (req, res, next) => {
   try {
+    //    if (!req.session.user) {
+    //      console.log("허가되지 않은 접근 시도");
+    //      return res.status(403).json({ msg: "허가되지 않은 접근 시도" });
+    //    }
     const companies = req.body.companies as Array<string>;
     console.log(companies);
     console.log(typeof companies);
@@ -74,6 +79,12 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
       .orderBy("cs.sichong", "DESC")
       .getRawMany();
 
+    const userCompanys = new UserCompanys();
+    userCompanys.email = req.session.user.email;
+    userCompanys.companyNames = dto.selectedCompanies;
+    const result = await userCompanys.save();
+    console.log("getCompany is save: " + JSON.stringify(result));
+
     const company_codes = companies.map((c) => c.code);
     const processed_companies = companies.map((c) => ({
       id: company_codes.findIndex((val) => val == c.code),
@@ -107,6 +118,18 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
     return res.json({
       data: { nodes: processed_companies, edges: processed_corrs },
     });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({});
+  }
+};
+
+export const getUserCompany: RequestHandler = async (req, res, next) => {
+  try {
+    const email = req.session.user.email;
+    const companys = await UserCompanys.findOne(email);
+    console.log(`email:${email}, ${companys}`);
+    return res.json({ data: companys.companyNames });
   } catch (error) {
     console.error(error);
     return res.status(500).json({});
