@@ -512,14 +512,22 @@ ul.CTAs a {
 #newsList::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #d62929;
+  background-color: #63ddac;
 }
 
-#resultChecker {
+#resultChecker .companyName {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
+}
+#resultChecker .companyCode {
+  text-align: center;
+  font-size: 1.5rem;
 }
 
+#resultChecker #compInfo {
+  text-align: center;
+  color: white;
+}
 #config {
   float: left;
   width: 400px;

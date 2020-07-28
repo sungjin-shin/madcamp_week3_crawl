@@ -57,11 +57,14 @@ function draw() {
     var nodeInfo = params;
     node = nodes.get(nodeInfo.nodes);
     console.log(node);
-    var compName = node[0].label;
+    var companyName = node[0].label;
     const companyCode = node[0].title;
     console.log(node);
-    $("#resultChecker").text(compName);
-    compNews(compName);
+    $("#resultChecker").empty();
+    $("#resultChecker").append(
+      `<p id="compInfo"><span class="companyName" >${companyName}</span><span class="companyCode">&nbsp ${companyCode}</span></p>`
+    );
+    compNews(companyName);
     compStockImage(companyCode);
     if ($("#rightsidebar").attr("class") != "") {
       $("#rightsidebar").toggleClass("active");
@@ -215,7 +218,7 @@ function putCompanyNews(data) {
 
 $(document).ready(function () {
   $("#clearComp").on("click", function () {
-    getData("http://192.249.19.243:8780/api/company/clear", {})
+    getData(BASE_URL + "api/company/clear", {})
       .then((data) => {
         nodes = new vis.DataSet([]);
         edges = new vis.DataSet([]);
