@@ -154,14 +154,15 @@ function getData(url, data) {
 }
 
 function putCompanyList() {
+  // DATA 이미 있다. 그리는 것만 신경쓰자.
   compInfos.forEach((element) => {
     if (selComp.indexOf(element["회사명"]) !== -1) {
       $("#myList").append(
-        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  checked/>${element["회사명"]}, ${element["시가총액    "]}</div></label>`
+        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  checked/>${element["회사명"]}, ${element["시가총액"]}</div></label>`
       );
     } else {
       $("#myList").append(
-        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  />${element["회사명"]}, ${element["시가총액"]}</di    v></label>`
+        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  />${element["회사명"]}, ${element["시가총액"]}</div></label>`
       );
     }
   });
@@ -215,10 +216,14 @@ $(document).ready(function () {
   $("#clearComp").on("click", function () {
     getData("http://192.249.19.243:8780/api/company/clear", {})
       .then((data) => {
-        nodes = new vis.DataSet(data.data.nodes);
-        edges = new vis.DataSet(data.data.edges);
+        nodes = new vis.DataSet([]);
+        edges = new vis.DataSet([]);
+        selComp = [];
       })
-      .then(draw())
+      .then(() => {
+        draw();
+        putCompanyList();
+      })
       .catch((error) => console.error(error));
   });
 });
