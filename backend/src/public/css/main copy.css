@@ -76,14 +76,6 @@ span {
   color: #000;
 }
 
-#sidebar ul ul #myList .form-check {
-  background: #fff;
-}
-
-#sidebar ul ul #myList.isSelected {
-  visibility: "hidden";
-}
-
 #compname {
   text-align: left;
 }
@@ -300,20 +292,11 @@ a.article:hover {
   transition: all 0.5s ease;
   opacity: 1;
 }
-
-/* 그래프 수정된 부분 */
 #wrapper {
-  margin: auto;
-  width: 1100px;
-  height: 80%;
-}
-
-#mynetwork {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 900px;
+  height: 900px;
 }
-/* 그래프 수정된 부분 */
 
 #text {
   position: absolute;
@@ -398,13 +381,8 @@ div.outerBorder {
 /* ---------------------------------------------------
     Custom. Searchbar
 ----------------------------------------------------- */
-#myList label:nth-of-type(n + 11) {
-  /* 원래 a였음*/
+#myList a:nth-of-type(n + 11) {
   display: none;
-}
-#myList label {
-  margin-bottom: 0;
-  font-size: 0.8rem;
 }
 
 /* ---------------------------------------------------
@@ -480,48 +458,16 @@ ul.CTAs a {
   border-radius: 5px;
   margin-bottom: 5px;
 }
-
 /* ---------------------------------------------------
     Custom right sidebar
 ----------------------------------------------------- */
 #newsList {
-  color: #000;
-  height: 500px;
-  overflow-y: scroll;
-}
-
-.custom-card {
-  width: 400px;
-  margin: auto;
-}
-
-/* ---------------------------------------------------
-    Custom scrollbar
------------------------------------------------------ */
-#newsList::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #f5f5f5;
-}
-
-#newsList::-webkit-scrollbar {
-  width: 12px;
-  background-color: #f5f5f5;
-}
-
-#newsList::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #d62929;
-}
-
-#resultChecker {
-  text-align: center;
-  font-size: 3rem;
-}
-
-#config {
-  float: left;
-  width: 400px;
-  height: 600px;
-}
+    color: #000;
+    height: 720px;
+    overflow-y: scroll;
+  }
+  .custom-card {
+    width: 400px;
+    margin: auto;
+  }
+  
