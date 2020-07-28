@@ -210,6 +210,19 @@ function putCompanyNews(data) {
     );
   });
 }
+
+$(document).ready(function () {
+  $("#clearComp").on("click", function () {
+    getData("http://192.249.19.243:8780/api/company/clear", {})
+      .then((data) => {
+        nodes = new vis.DataSet(data.data.nodes);
+        edges = new vis.DataSet(data.data.edges);
+      })
+      .then(draw())
+      .catch((error) => console.error(error));
+  });
+});
+
 window.onload = function () {
   console.log("load가 다 됐어요.");
   preloadUserCompany();
