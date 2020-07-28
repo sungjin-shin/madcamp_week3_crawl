@@ -73,12 +73,12 @@ function drawGraph(ev) {
     selComp = Array.from(new Set(selComp));
     console.log(selComp);
     sendSelComp();
-    setTimeout(draw, 50);
+    setTimeout(draw, 150);
   } else {
     var idx = selComp.indexOf(ev.getAttribute("value"));
     selComp.splice(idx, 1);
     sendSelComp();
-    setTimeout(draw, 50);
+    setTimeout(draw, 150);
   }
 }
 
