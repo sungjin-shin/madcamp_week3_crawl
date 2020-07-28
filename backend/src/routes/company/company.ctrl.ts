@@ -66,7 +66,7 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
     console.log(`input: ${String(dto.selectedCompanies)}`);
     if (!dto.selectedCompanies || dto.selectedCompanies.length <= 0) {
       console.log("companies is empty: ", dto.selectedCompanies);
-      return res.status(404).json({});
+      return res.status(200).json({ data: { nodes: [], edges: [] } });
     }
     const companies = await getRepository(CompanySichong)
       .createQueryBuilder("cs")
@@ -80,7 +80,8 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
       .getRawMany();
 
     const userCompanys = new UserCompanys();
-    userCompanys.email = req.session.user.email;
+    // userCompanys.email = req.session.user.email;
+    userCompanys.email = "park@park"; //TODO: 수정하기
     userCompanys.companyNames = dto.selectedCompanies;
     const result = await userCompanys.save();
     console.log("getCompany is save: " + JSON.stringify(result));
@@ -129,6 +130,8 @@ export const getUserCompany: RequestHandler = async (req, res, next) => {
     const email = req.session.user.email;
     const companys = await UserCompanys.findOne(email);
     console.log(`email:${email}, ${companys}`);
+    if (companys == null) return res.json({ data: [] });
+
     return res.json({ data: companys.companyNames });
   } catch (error) {
     console.error(error);
