@@ -80,8 +80,7 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
       .getRawMany();
 
     const userCompanys = new UserCompanys();
-    // userCompanys.email = req.session.user.email;
-    userCompanys.email = "park@park"; //TODO: 수정하기
+    userCompanys.email = req.session.user.email;
     userCompanys.companyNames = dto.selectedCompanies;
     const result = await userCompanys.save();
     console.log("getCompany is save: " + JSON.stringify(result));

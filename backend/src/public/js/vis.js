@@ -56,10 +56,13 @@ function draw() {
     params.event = "[original Event]";
     var nodeInfo = params;
     node = nodes.get(nodeInfo.nodes);
+    console.log(node);
     var compName = node[0].label;
+    const companyCode = node[0].title;
     console.log(node);
     $("#resultChecker").text(compName);
     compNews(compName);
+    compStockImage(companyCode);
     if ($("#rightsidebar").attr("class") != "") {
       $("#rightsidebar").toggleClass("active");
     }
@@ -173,7 +176,13 @@ function compNews(compName) {
     })
     .catch((error) => console.error(error));
 }
-
+function compStockImage(companyCode) {
+  $("#wrapper-image").empty();
+  const url = `https://ssl.pstatic.net/imgfinance/chart/mobile/candle/day/${companyCode}_end.png`;
+  $("#wrapper-image").append(
+    `<img src=${url} alt="주가정보" class="rounded" />`
+  );
+}
 function putCompanyNews(data) {
   $("#newsList").empty();
   console.log(data);

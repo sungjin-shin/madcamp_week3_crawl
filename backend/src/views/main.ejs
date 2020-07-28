@@ -1,124 +1,163 @@
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Collapsible sidebar using Bootstrap 4</title>
 
-  <title>Collapsible sidebar using Bootstrap 4</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/static/css/main.css" />
 
-  <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" />
-  <!-- Our Custom CSS -->
-  <link rel="stylesheet" href="/static/css/main.css" />
+    <!-- Font Awesome JS -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+      integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+      integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <!-- Font Awesome JS -->
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-    integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
-    crossorigin="anonymous"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-    integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
-    crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <div class="wrapper">
-    <!-- Sidebar  -->
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        <h3>Sweet Jam</h3>
-        <div>Realize your expectation</div>
-        <strong>SJ</strong>
-      </div>
-
-      <ul class="list-unstyled components">
-        <li>
-          <a href="#searchSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            <i class="fas fa-search"></i>
-            Search company
-          </a>
-          <ul class="collapse list-unstyled" id="searchSubmenu">
-            <div class="container">
-              <input class="form-control" id="listSearch" type="text" placeholder="Type company" />
-              <ul class="list-group" id="myList"></ul>
-            </div>
-          </ul>
-        </li>
-      </ul>
-      <button id="logoutBtn">
-        logout
-      </button>
-    </nav>
-
-    <!-- Page Content  -->
-    <div id="content">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <svg class="svg-inline--fa fa-align-left fa-w-14" aria-hidden="true" data-prefix="fas"
-              data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
-              data-fa-i2svg="">
-              <path fill="currentColor"
-                d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z" />
-            </svg>
-            <span>Sidebar</span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-            </ul>
-          </div>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Sweet Jam</h3>
+          <div>Realize your expectation</div>
+          <strong>SJ</strong>
         </div>
+
+        <ul class="list-unstyled components">
+          <li>
+            <a
+              href="#searchSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+            >
+              <i class="fas fa-search"></i>
+              Search company
+            </a>
+            <ul class="collapse list-unstyled" id="searchSubmenu">
+              <div class="container">
+                <input
+                  class="form-control"
+                  id="listSearch"
+                  type="text"
+                  placeholder="Type company"
+                />
+                <ul class="list-group" id="myList"></ul>
+              </div>
+            </ul>
+          </li>
+        </ul>
+        <button id="logoutBtn">
+          logout
+        </button>
       </nav>
 
-      <div class="line"></div>
+      <!-- Page Content  -->
+      <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-info">
+              <svg
+                class="svg-inline--fa fa-align-left fa-w-14"
+                aria-hidden="true"
+                data-prefix="fas"
+                data-icon="align-left"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                data-fa-i2svg=""
+              >
+                <path
+                  fill="currentColor"
+                  d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"
+                />
+              </svg>
+              <span>Sidebar</span>
+            </button>
 
-      <div id="wrapper">
-        <div id="mynetwork"></div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Page</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div class="line"></div>
+
+        <div id="wrapper">
+          <div id="mynetwork"></div>
+        </div>
       </div>
+      <nav id="rightsidebar" class="">
+        <div class="sidebar-header">
+          <button type="button" id="rightsidebarCollapse" class="btn btn-info">
+            <span>창을 닫어~</span>
+          </button>
+        </div>
+
+        <div id="resultChecker"></div>
+        <div id="newsList" class="scrollbar"></div>
+        <div id="wrapper-image"></div>
+      </nav>
     </div>
-    <nav id="rightsidebar" class="">
-      <div class="sidebar-header">
-        <button type="button" id="rightsidebarCollapse" class="btn btn-info">
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.css"
+    />
+    <script src="/static/js/vis.js"></script>
 
-          <span>창을 닫어~</span>
-        </button>
-      </div>
-
-      <div id="resultChecker"></div>
-      <div id="newsList" class="scrollbar"></div>
-    </nav>
-  </div>
-  <!-- jQuery CDN - Slim version (=without AJAX) -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <!-- Popper.JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-    crossorigin="anonymous"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.19.1/vis.min.css" />
-  <script src="/static/js/vis.js"></script>
-
-  <script src="/static/js/main.js"></script>
-</body>
-
+    <script src="/static/js/main.js"></script>
+  </body>
 </html>

@@ -491,7 +491,7 @@ ul.CTAs a {
 }
 
 .custom-card {
-  width: 400px;
+  width: 450px;
   margin: auto;
 }
 
@@ -524,4 +524,14 @@ ul.CTAs a {
   float: left;
   width: 400px;
   height: 600px;
+}
+#wrapper-image {
+  padding-top: 20;
+}
+#wrapper-image img {
+  display: block;
+  margin-right: 30;
+  margin-left: auto;
+  width: 450;
+  height: 280;
 }
