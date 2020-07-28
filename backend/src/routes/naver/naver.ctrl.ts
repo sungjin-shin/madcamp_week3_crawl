@@ -1,7 +1,4 @@
 import fetch from "node-fetch";
-// TODO: 사용자한테서 요청 받기 O
-// Naver OpenAPI로 요청보내서 결과값 받기
-// 받은 결과값을 필요한부분만 잘라기 사용자한테 건내주기.
 
 import { RequestHandler } from "express";
 import { URL, URLSearchParams } from "url";
@@ -42,18 +39,4 @@ function getData(url) {
     .catch((error) => {
       console.error(error);
     });
-
-  // var newUrl = new URL(url);
-
-  // var query = data;
-
-  // newUrl.search = new URLSearchParams(query).toString();
-
-  // fetch(newUrl)
-  //   .then((response) => {
-  //     console.log(JSON.stringify(response));
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
 }

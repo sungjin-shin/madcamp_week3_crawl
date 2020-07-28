@@ -29,7 +29,7 @@ a:focus {
   background: #fff;
   border: none;
   border-radius: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -43,7 +43,7 @@ a:focus {
   width: 100%;
   height: 1px;
   border-bottom: 1px dashed rgb(145, 145, 145);
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 i,
@@ -309,7 +309,7 @@ a.article:hover {
 #wrapper {
   margin: auto;
   width: 1100px;
-  height: 80%;
+  height: 77%;
 }
 
 #mynetwork {
