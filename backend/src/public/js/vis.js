@@ -155,6 +155,7 @@ function getData(url, data) {
 
 function putCompanyList() {
   // DATA 이미 있다. 그리는 것만 신경쓰자.
+  $("#myList").empty();
   compInfos.forEach((element) => {
     if (selComp.indexOf(element["회사명"]) !== -1) {
       $("#myList").append(
