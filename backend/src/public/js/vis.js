@@ -119,7 +119,7 @@ function preloadUserCompany() {
       selComp = response.data;
       console.log(`user Company: ${selComp}`);
       sendSelComp();
-      setTimeout(draw, 100);
+      setTimeout(draw, 150);
     })
     .catch((error) => console.error(error));
 }
@@ -147,10 +147,15 @@ function getData(url, data) {
 
 function putCompanyList() {
   compInfos.forEach((element) => {
-    $("#myList").append(
-      //   `<a class="list-group-item" href="#" onclick="drawGraph(this)" value="${element["회사명"]}" > <span class="fa fa-check" id="isSelected" display = "none"></span> ${element["회사명"]}, ${element["시가총액"]}</a>`
-      `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  />${element["회사명"]}, ${element["시가총액"]}</div></label>`
-    );
+    if (selComp.indexOf(element["회사명"]) !== -1) {
+      $("#myList").append(
+        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  checked/>${element["회사명"]}, ${element["시가총액    "]}</div></label>`
+      );
+    } else {
+      $("#myList").append(
+        `<label><div class="list-group-item" href="#" ><input type="checkbox" onclick="drawGraph(this)" value="${element["회사명"]}"  />${element["회사명"]}, ${element["시가총액"]}</di    v></label>`
+      );
+    }
   });
 }
 function compNews(compName) {
@@ -183,6 +188,7 @@ function putCompanyNews(data) {
           <a
             href="${element["originallink"]}"
             class="card-link"
+            target="_blank"
             >보러가기</a
           >
         </div>
@@ -192,6 +198,6 @@ function putCompanyNews(data) {
 }
 window.onload = function () {
   console.log("load가 다 됐어요.");
-  compInfo();
   preloadUserCompany();
+  compInfo();
 };

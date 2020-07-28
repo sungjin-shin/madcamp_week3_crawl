@@ -64,7 +64,7 @@ export const createUser: RequestHandler = async (req, res, next) => {
     });
     if (isExist) {
       console.log("이미 존재하는 이메일로 회원가입 시도");
-      return res.status(404).json({ msg: "이미 존재하는 이메일" });
+      return res.status(409).json({ msg: "이미 존재하는 이메일" });
     }
     const user = new User();
     user.email = dto.email;
