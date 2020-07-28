@@ -138,3 +138,16 @@ export const getUserCompany: RequestHandler = async (req, res, next) => {
     return res.status(500).json({});
   }
 };
+
+export const clearCompany: RequestHandler = async (req, res, next) => {
+  try {
+    const { email } = req.session.user;
+    await UserCompanys.update(email, { companyNames: [] });
+    return res.json({
+      data: { nodes: [], edges: [] },
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({});
+  }
+};

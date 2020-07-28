@@ -7,4 +7,5 @@ router.get("/list", comCtrl.getCompanyInfos);
 router.post("/corr", comCtrl.getCorrByName);
 router.post("/corrcode", comCtrl.getCompanyCorrelation);
 router.get("/getcompanys", comCtrl.getUserCompany);
+router.get("/clear", comCtrl.clearCompany);
 export default router;
