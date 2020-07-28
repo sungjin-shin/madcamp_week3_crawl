@@ -13,6 +13,8 @@ $(document).ready(function () {
 $(document).ready(function () {
   $("#rightsidebarCollapse").on("click", function () {
     $("#rightsidebar").toggleClass("active");
+    $("#content").toggleClass("active");
+    console.log("contentISIS");
   });
 });
 

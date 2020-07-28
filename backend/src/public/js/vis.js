@@ -68,6 +68,8 @@ function draw() {
     compStockImage(companyCode);
     if ($("#rightsidebar").attr("class") != "") {
       $("#rightsidebar").toggleClass("active");
+
+      $("#content").toggleClass("active");
     }
   });
 }
@@ -127,7 +129,7 @@ function preloadUserCompany() {
     .then((response) => {
       //   console.log(`type: ${typeof response.data}`);
       //   console.log(`type: ${JSON.stringify(response.data)}`);
-      selComp = response.data;
+      selComp = response.data || [];
       console.log(`user Company: ${selComp}`);
       sendSelComp();
       setTimeout(draw, 150);
