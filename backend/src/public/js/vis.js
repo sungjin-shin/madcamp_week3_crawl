@@ -18,6 +18,11 @@ function draw() {
         max: 30,
       },
     },
+    edges: {
+      color: {
+        highlight: "#83DCB7",
+      },
+    },
     layout: {
       randomSeed: 34,
     },
