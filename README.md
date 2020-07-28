@@ -1,5 +1,5 @@
 # 🍺 몰입캠프 3주차
-> Hey Hey you! We have some gift for you! Don't press the skip button.
+
 ## 팀원
 * [신성진](https://github.com/sungjin-shin)
 * [박종우](https://github.com/jjwow73)
