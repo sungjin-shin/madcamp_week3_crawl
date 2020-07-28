@@ -105,7 +105,7 @@ export const getCorrByName: RequestHandler = async (req, res, next) => {
         const from = company_codes.findIndex((val) => val == corr.sourceCode);
         const to = company_codes.findIndex((val) => val == corr.targetCode);
         const value = Math.abs(Number(corr.weight));
-        if (from <= to && value <= 0.3) {
+        if (from <= to && value >= 0.15) {
           return {
             from: from,
             to: to,
