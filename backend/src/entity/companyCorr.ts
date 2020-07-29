@@ -9,7 +9,7 @@ import {
 @Entity()
 export class CompanyCorr extends BaseEntity {
   @PrimaryColumn()
-  sourceCode: string;
+  sourceCode!: string;
 
   @PrimaryColumn()
   targetCode!: string;

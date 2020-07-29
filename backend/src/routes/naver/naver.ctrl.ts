@@ -21,7 +21,7 @@ export const getNews: RequestHandler = async (req, res, next) => {
   }
 };
 
-function getData(url) {
+function getData(url: string) {
   return fetch(url, {
     method: "GET",
     headers: {

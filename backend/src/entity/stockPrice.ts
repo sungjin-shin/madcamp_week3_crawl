@@ -2,14 +2,14 @@ import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from "typeorm";
 @Entity()
 export class StockPrice extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: string;
+  id!: string;
 
   @Column()
-  code: string;
+  code!: string;
 
   @Column()
-  date: Date;
+  date!: Date;
 
   @Column()
-  price: number;
+  price!: number;
 }

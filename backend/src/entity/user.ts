@@ -10,4 +10,15 @@ export class User extends BaseEntity {
 
   @Column()
   password!: string;
+
+  static async isExistByEmailPassword({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }): Promise<boolean> {
+    const result = await this.findOne({ email, password });
+    return result != null;
+  }
 }

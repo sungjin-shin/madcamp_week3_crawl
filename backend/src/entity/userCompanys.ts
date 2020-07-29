@@ -9,8 +9,8 @@ import {
 @Entity()
 export class UserCompanys extends BaseEntity {
   @PrimaryColumn()
-  email: string;
+  email!: string;
 
   @Column("simple-array")
-  companyNames: string[];
+  companyNames!: string[];
 }

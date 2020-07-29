@@ -9,20 +9,18 @@ export const loginUser: RequestHandler = async (req, res, next) => {
     };
     //TODO: password Hash 해주기.
 
-    const isExist = await User.count({
-      email: dto.email,
-      password: dto.password,
-    });
-    console.log("is Exist: " + isExist);
+    const isExist = await User.isExistByEmailPassword(dto);
     if (!isExist) {
       console.log("존재하지 않는 이메일, 비밀번호로 접속 시도");
       return res
         .status(404)
         .json({ msg: "존재하지 않는 이메일/비밀번호 입니다." });
     }
-    req.session.user = {
-      email: dto.email,
-    };
+    if (req.session) {
+      req.session.user = {
+        email: dto.email,
+      };
+    }
     return res.status(200).json({ msg: "OK" });
   } catch (error) {
     console.error(error);
@@ -32,6 +30,9 @@ export const loginUser: RequestHandler = async (req, res, next) => {
 
 export const logoutUser: RequestHandler = async (req, res, next) => {
   try {
+    if (!req.session) {
+      return res.status(403).json({ msg: "잘못된 요청" });
+    }
     const sessUser = req.session.user;
     if (!sessUser) {
       console.log("session이 존재하지 않습니다.");
